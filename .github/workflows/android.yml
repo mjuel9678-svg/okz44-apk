@@ -1,3 +1,4 @@
+
 name: Build OKZ44 APK
 
 on:
@@ -22,7 +23,8 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@4
+        uses: android-actions/setup-android@v3
+
       - name: Install Android SDK
         run: |
           sdkmanager --install \
