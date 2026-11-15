@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - 'OKZ44_GitHub_Build_Project.zip'
+      - 'OKZ44_Android_Project.zip'
       - '.github/workflows/android.yml'
 
 jobs:
@@ -22,13 +22,9 @@ jobs:
           java-version: '17'
 
       - name: Setup Android SDK
-        uses: android-actions/setup-android@v4
-        with:
-          cmdline-tools-version: '15859902'
-          accept-android-sdk-licenses: true
-          packages: platform-tools
+        uses: android-actions/setup-android@v3
 
-      - name: Install Android SDK Packages
+      - name: Install Android SDK
         run: |
           sdkmanager --install \
             "platforms;android-35" \
@@ -41,8 +37,8 @@ jobs:
 
       - name: Extract project
         run: |
-          unzip -o OKZ44_GitHub_Build_Project.zip -d .
-          test -d OKZ44_Android_Project
+          unzip -o OKZ44_Android_Project.zip -d .
+          ls -la OKZ44_Android_Project
 
       - name: Build APK
         working-directory: OKZ44_Android_Project
